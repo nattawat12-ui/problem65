@@ -40,6 +40,37 @@ class LinkedList:
         while(temp):
             print (" %d" %(temp.data)),
             temp = temp.next
+    def printReverse(self):
+        if self.head == Node:  
+            return None  
+  
+        previous = None  
+        current = self.head  
+        after = current.next   
+  
+        while current:  
+            # Reverse the link  
+            current.next = previous  
+            # Moving previous element to one ahead  
+            previous = current  
+            # Moving current one element ahead  
+            current = after  
+            # Moving one element ahead  
+            if after:  
+                after = after.next  
+    
+        self.head = previous  
+        self.printList()
+        '''prev = None 
+        curr = self.head
+        while(curr is not None):
+            next=  curr.next
+            curr.next = prev
+            prev = curr
+            curr = next
+        self.head = prev
+        self.printList()'''
+
 if __name__ == "__main__":
         llist = LinkedList()
         llist.push(7)
@@ -52,3 +83,5 @@ if __name__ == "__main__":
         print ("Linked List after Deletion of 1:")
 
         llist.printList()
+        print ("Print  Revese  of Linked List ")
+        llist.printReverse()
