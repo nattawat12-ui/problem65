@@ -1,7 +1,7 @@
 #Shell sort 
 list1 = []
 for i in range(int(input('How many students to input score: '))):
-    list1.append(int(input(f'Score{i+1}: ')))
+    list1.append(int(input(f'Score {i+1}: ')))
 
 def showscore (arr):
     reversed_list = arr[::-1]
