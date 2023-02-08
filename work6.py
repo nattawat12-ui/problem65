@@ -6,8 +6,8 @@ for i in range(int(input('How many students to input score: '))):
 def showscore (arr):
     reversed_list = arr[::-1]
     last_three = reversed_list[:3]
-    print('top 3 highest',last_three)
-    print("top 3 lowest ",shell_sort(list1[0:3]))
+    print('top 3 highest',shell_sort(list1[0:3]))
+    print("top 3 lowest ",last_three)
 def shell_sort(arr):
     n = len(arr)
     gap = n // 2
