@@ -1,7 +1,8 @@
 #Shell sort 
 list1 = []
-for i in range(int(input('How many students to input score: '))):
-    list1.append(int(input(f'Score {i+1}: ')))
+def InputScore ():
+    for i in range(int(input('How many students to input score: '))):
+        list1.append(int(input(f'Score {i+1}: ')))
 
 def showscore (arr):
     reversed_list = arr[::-1]
@@ -21,6 +22,7 @@ def shell_sort(arr):
             arr[j] = temp
         gap //= 2
     return arr
+InputScore()
 print(shell_sort(list1)) 
 showscore(list1)
 print(list1.count(int(input('How many this score: '))))
