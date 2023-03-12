@@ -9,7 +9,7 @@ def find_nearby_animals(animal, graph):
     if not neighbors:
         print(f"{animal} has no nearby animals.")
 
-# find closest animal based on weight of relationship
+# find closest animal BFS
 def find_closest_animal(animal, graph):
     visited = {animal}
     queue = [(animal, 0)]
@@ -31,7 +31,7 @@ def find_closest_animal(animal, graph):
     return closest_animal, min_weight
 
 
-# function to save user input data to file
+# function to save 
 def save_data(data, filepath):
     with open(filepath, "a") as f:
         for animal, relationships in data.items():
@@ -51,7 +51,7 @@ for i in range(num_animals):
         relationships[relationship] = weight
     data[animal] = relationships
 
-# save user input data to file
+# save user input 
 filepath = "user_input.txt"
 save_data(data, filepath)
 
