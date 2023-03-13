@@ -9,26 +9,37 @@ def find_nearby_animals(animal, graph):
     if not neighbors:
         print(f"{animal} has no nearby animals.")
 
-# find closest animal BFS
 def find_closest_animal(animal, graph):
     visited = {animal}
     queue = [(animal, 0)]
     closest_animal = None
     min_weight = float('inf')
-    
+
+    if animal in graph.edges():
+        # if animal is an edge, find the closest node to either end of the edge
+        u, v = animal
+        neighbors = list(graph.neighbors(u)) + list(graph.neighbors(v))
+    else:
+        # if animal is a node, find its neighbors
+        neighbors = list(graph.neighbors(animal))
+
     while queue:
         current_animal, distance = queue.pop(0)
-        
-        if current_animal != animal and graph[animal][current_animal]['weight'] < min_weight:
+
+        if current_animal in neighbors and current_animal != animal and graph[animal][current_animal]['weight'] < min_weight:
             closest_animal = current_animal
             min_weight = graph[animal][current_animal]['weight']
-        
+
         for neighbor in graph.neighbors(current_animal):
             if neighbor not in visited:
                 visited.add(neighbor)
                 queue.append((neighbor, distance + graph[current_animal][neighbor]['weight']))
-    
-    return closest_animal, min_weight
+
+    if closest_animal is not None:
+        return closest_animal, min_weight
+    else:
+        return "No closest animal found.", None
+
 
 
 # function to save 
@@ -56,7 +67,7 @@ filepath = "user_input.txt"
 save_data(data, filepath)
 
 # directed graph
-G = nx.DiGraph()
+G = nx.Graph()
 
 # Add nodes and edges to graph
 for animal in data.keys():
