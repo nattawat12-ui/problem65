@@ -13,13 +13,13 @@ n = int(input("Enter the number of animals in the genus: "))
 # Create a list to store the animal names
 animals = []
 
-# Add each animal node to the graph
+# Add node to the graph
 for i in range(n):
     animal = input(f"Enter the name of animal {i+1}: ")
     animals.append(animal)
     G.add_node(animal)
 
-# Get user input for the relationships between the animals and their weights
+#relationships the animals and  weights
 for i in range(n):
     for j in range(i+1, n):
         weight_str = input(f"Enter the weight of the relationship between {animals[i]} and {animals[j]}, or press enter to skip: ")
@@ -30,7 +30,7 @@ for i in range(n):
             except ValueError:
                 print("Invalid weight input. Skipping edge.")
 
-# Define a function to find the animal closest to a given animal
+# find the animal closest to a given animal
 def find_farthest_animal(animal):
     neighbors = list(G.neighbors(animal))
     if not neighbors:
@@ -48,15 +48,11 @@ def find_farthest_animal(animal):
     return farthest_animals
 
 
-
-
-# Get user input for the animal to find the closest animal for
+#input for the animal to find the closest animal for
 target_animal = input("Enter the name of the animal to find the closest animal for: ")
 
-# Find the closest animal(s) to the target animal
 closest_animals = find_farthest_animal(target_animal)
 
-# Print the closest animal(s) (if any)
 if closest_animals:
     print(f"The animal(s) closest to {target_animal} is {closest_animals}.")
 else:
